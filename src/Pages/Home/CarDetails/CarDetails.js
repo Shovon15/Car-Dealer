@@ -12,6 +12,7 @@ const CardDetailWrapper = styled(Box)(({ theme }) => ({
     marginTop: "5rem",
     // display: "flex",
     // justifyContent: "space-between",
+
     // alignItems: "center",
     borderRadius: "10px",
 }));
