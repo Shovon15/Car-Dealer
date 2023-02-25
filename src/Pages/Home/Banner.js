@@ -1,4 +1,5 @@
 import { Box, Button, Stack, styled, Typography } from "@mui/material";
+import { Container } from "@mui/system";
 import React, { useContext } from "react";
 import Carousel from "react-material-ui-carousel";
 import { ColorModeContext } from "../../Context/ColorModeContext";
@@ -25,8 +26,9 @@ const BrandingWrapper = styled(Box)(({ theme }) =>
 
 const Banner = () => {
     return (
-        <BrandingWrapper>
-            {/* <Box
+        <Container>
+            <BrandingWrapper>
+                {/* <Box
                 sx={{
                     // height: "100vh",
                     display: "flex",
@@ -34,67 +36,76 @@ const Banner = () => {
                     flexDirection: { xs: "column", sm: "column", md: "row" },
                 }}
             > */}
-            <Stack spacing={5} sx={{ px: "2rem" }}>
-                <Typography
-                    sx={{
-                        fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" },
-                        fontWeight: "bold",
-                        lineHeight: "1.2",
-                    }}
-                >
-                    Make Your <br />
-                    Dreams Come True
-                </Typography>
-                <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo ipsum duis laoreet maecenas.
-                    Feugiat{" "}
-                </Typography>
-                <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-                    <Button
-                        // outlinedSizeLarge
-                        variant="outlined"
-                        size="large"
-                        // color="success"
-                        // fontSize="20"
-                        sx={
-                            {
-                                // backgrounColor: "primary",
-                            }
-                        }
-                    >
-                        Buy A Car
-                    </Button>
-                    <Button
-                        variant="outlined"
+                <Stack spacing={2} sx={{ px: "2rem" }}>
+                    <Typography
                         sx={{
-                            backgrounColor: "secondary",
-                            // width: "100%",
-                            py: 1,
+                            fontSize: { xs: ".5rem", sm: ".5rem", md: "2rem" },
+                            fontWeight: "bold",
+                            // lineHeight: "1.2",
                         }}
                     >
-                        Sell My Car
-                    </Button>
-                </Box>
-            </Stack>
+                        Welcome To Car Dealer
+                    </Typography>
+                    <Typography
+                        sx={{
+                            fontSize: { xs: "2rem", sm: "2rem", md: "3rem" },
+                            fontWeight: "bold",
+                            lineHeight: "1.2",
+                        }}
+                    >
+                        Best Way To Find <br /> Your Dream Car
+                    </Typography>
+                    <Typography>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo ipsum duis laoreet
+                        maecenas. Feugiat{" "}
+                    </Typography>
+                    <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
+                        <Button
+                            // outlinedSizeLarge
+                            variant="outlined"
+                            size="large"
+                            // color="success"
+                            // fontSize="20"
+                            sx={
+                                {
+                                    // backgrounColor: "primary",
+                                }
+                            }
+                        >
+                            Buy A Car
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            sx={{
+                                backgrounColor: "secondary",
+                                // width: "100%",
+                                py: 1,
+                            }}
+                        >
+                            Sell My Car
+                        </Button>
+                    </Box>
+                </Stack>
 
-            <Carousel
-                animation="slide"
-                duration="600"
-                interval="4000"
-                indicatorContainerProps={{
-                    style: {
-                        display: "none",
-                    },
-                }}
-                // sx={{ display: "grid", placeItems: "center", width: "100%" }}
-                sx={{ width: "100%", display: { xs: "none", sm: "none", md: "block" } }}
-            >
-                {items.map((item) => (
-                    <BannerItems key={item.id} item={item} />
-                ))}
-            </Carousel>
-            {/* </Box> */}
-        </BrandingWrapper>
+                <Carousel
+                    animation="slide"
+                    duration="600"
+                    interval="4000"
+                    indicatorContainerProps={{
+                        style: {
+                            display: "none",
+                        },
+                    }}
+                    // sx={{ display: "grid", placeItems: "center", width: "100%" }}
+                    sx={{ width: "100%", display: { xs: "none", sm: "none", md: "block" } }}
+                >
+                    {items.map((item) => (
+                        <BannerItems key={item.id} item={item} />
+                    ))}
+                </Carousel>
+                {/* </Box> */}
+            </BrandingWrapper>
+        </Container>
     );
 };
 

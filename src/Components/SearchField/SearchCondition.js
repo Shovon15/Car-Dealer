@@ -3,36 +3,15 @@ import { Box } from "@mui/system";
 import React from "react";
 const carBrand = [
     {
-        value: "Toyota",
-        label: "Toyota",
+        value: "New Car",
+        label: "New Car",
     },
     {
-        value: "Honda",
-        label: "Honda",
-    },
-    {
-        value: "Chevrolet",
-        label: "Chevrolet",
-    },
-    {
-        value: "Mercedes-Benz",
-        label: "Pickup Truck",
-    },
-    {
-        value: "BMW",
-        label: "BMW",
-    },
-
-    {
-        value: "Nissan",
-        label: "Nissan",
-    },
-    {
-        value: "Audi",
-        label: "Audi",
+        value: "Old Car",
+        label: "Old Car",
     },
 ];
-const SearchBrand = () => {
+const SearchCondition = () => {
     return (
         <Box
             component="form"
@@ -43,7 +22,7 @@ const SearchBrand = () => {
             autoComplete="off"
         >
             <div>
-                <TextField id="outlined-select-currency" select label="Brand Name">
+                <TextField id="outlined-select-currency" select label="Car Condition">
                     {carBrand.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
@@ -55,4 +34,4 @@ const SearchBrand = () => {
     );
 };
 
-export default SearchBrand;
+export default SearchCondition;

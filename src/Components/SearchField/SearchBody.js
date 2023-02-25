@@ -10,6 +10,22 @@ const carBody = [
         label: "SUV",
     },
     {
+        value: "Coupe",
+        label: "Coupe",
+    },
+    {
+        value: "Wagon",
+        label: "Wagon",
+    },
+    {
+        value: "Hatchback",
+        label: "Hatchback",
+    },
+    {
+        value: "Jeep",
+        label: "Jeep",
+    },
+    {
         value: "Crossover",
         label: "Crossover",
     },
@@ -24,7 +40,7 @@ const SearchBody = () => {
         <Box
             component="form"
             sx={{
-                "& .MuiTextField-root": { m: 1, width: "350px" },
+                "& .MuiTextField-root": { m: 1, width: "360px" },
             }}
             noValidate
             autoComplete="off"

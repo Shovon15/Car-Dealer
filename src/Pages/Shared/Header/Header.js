@@ -12,19 +12,21 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 // import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Container, ListItemText, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Avatar, Container, ListItemText, Stack, Tab, Tabs, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { MaterialUISwitch } from "../../../Components/ProductCard/MuiSwitch";
 import { ColorModeContext } from "../../../Context/ColorModeContext";
 import { Settings } from "@mui/icons-material";
-import logo from "../../../assets/logo/car-dealer-logo.png";
+import darkLogo from "../../../assets/logo/logoDark.png";
+import lightLogo from "../../../assets/logo/logoLight.png";
+import { AuthContext } from "../../../Context/AuthProvider";
+import useUser from "../../../hooks/useUser";
 
 const drawerWidth = 240;
-
 const navItems = [
     {
         id: 0,
-        path: "/home",
+        path: "/",
         label: "Home",
     },
     {
@@ -34,7 +36,12 @@ const navItems = [
     },
     {
         id: 2,
-        path: "/home",
+        path: "/",
+        label: "Blog",
+    },
+    {
+        id: 3,
+        path: "/",
         label: "Contact",
     },
 ];
@@ -44,7 +51,8 @@ function Header(props) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [settingOpen, setSettingOpen] = React.useState(false);
     const [value, setValue] = React.useState(0);
-
+    const { user, logOut } = React.useContext(AuthContext);
+    const [isUser] = useUser(user?.email);
     const { colorMode } = React.useContext(ColorModeContext);
 
     const handleChange = (event, newValue) => {
@@ -57,10 +65,21 @@ function Header(props) {
     const handleSettingDrawerToggle = () => {
         setSettingOpen((prevState) => !prevState);
     };
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                // alert("    logout     ");
+            })
+            .catch((error) => console.error(error));
+    };
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-            <img style={{ width: "150px", marginRight: "200px" }} src={logo} alt="logo"></img>
+            {colorMode.mode === "light" ? (
+                <img style={{ width: "150px" }} src={darkLogo} alt="logo"></img>
+            ) : (
+                <img style={{ width: "150px" }} src={lightLogo} alt="logo"></img>
+            )}
             <Divider />
             <List>
                 {navItems.map((item) => (
@@ -82,18 +101,42 @@ function Header(props) {
     );
     const settingDrawer = (
         <Box onClick={handleSettingDrawerToggle} sx={{ textAlign: "center" }}>
-            <Typography variant="h4">Setting</Typography>
+            <Typography variant="h4" height="4rem">
+                Setting
+            </Typography>
             <Divider />
             <List>
-                <Box sx={{ textAlign: "left", mx: "10px" }}>
-                    <Link to={"/login"} style={{ textDecoration: "none" }}>
-                        <Button sx={{ backgroundColor: "primary.green" }}>Login</Button>
-                    </Link>
-                    <Link to={"/login"} style={{ textDecoration: "none" }}>
-                        <Button variant="contained" sx={{ backgroundColor: "#21b6ae" }} color="info">
-                            signUP
+                <Box sx={{ display: "flex", flexDirection: "column", width: "full", gap: 1, mx: "1rem" }}>
+                    <Link to={"/"} style={{ textDecoration: "none" }}>
+                        <Button variant="contained" fullWidth sx={{ backgroundColor: "primary.green" }}>
+                            Cart Items
                         </Button>
                     </Link>
+                    {user?.uid ? (
+                        <>
+                            <Typography>
+                                {user?.displayName}, {user?.email}
+                            </Typography>
+                            <Link>
+                                <button onClick={handleLogOut} className="btn btn-ghost font-bold">
+                                    logOut
+                                </button>
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            <Link to={"/login"} style={{ textDecoration: "none" }}>
+                                <Button variant="contained" fullWidth sx={{ backgroundColor: "primary.green" }}>
+                                    Login
+                                </Button>
+                            </Link>
+                            <Link to={"/signup"} style={{ textDecoration: "none" }}>
+                                <Button variant="contained" sx={{ backgroundColor: "#21b6ae" }} fullWidth>
+                                    signUP
+                                </Button>
+                            </Link>
+                        </>
+                    )}
                 </Box>
             </List>
         </Box>
@@ -104,9 +147,11 @@ function Header(props) {
     return (
         <Box sx={{ display: "flex" }}>
             <CssBaseline />
-            <AppBar component="nav" sx={{ backgroundColor: "primary.main", boxShadow: "none" }}>
+            <AppBar component="nav" sx={{ backgroundColor: "primary.main", boxShadow: "none", height: "4rem" }}>
                 <Container>
-                    <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+                    <Toolbar
+                        sx={{ display: "flex", justifyContent: "space-between", "&.MuiToolbar-root": { px: "0px" } }}
+                    >
                         <IconButton
                             color="inherit"
                             aria-label="open drawer"
@@ -123,8 +168,12 @@ function Header(props) {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Box sx={{}}>
-                            <img style={{ width: "150px" }} src={logo} alt="logo"></img>
+                        <Box>
+                            {colorMode.mode === "light" ? (
+                                <img style={{ width: "150px" }} src={darkLogo} alt="logo"></img>
+                            ) : (
+                                <img style={{ width: "150px" }} src={lightLogo} alt="logo"></img>
+                            )}
                         </Box>
 
                         <Tabs
@@ -138,7 +187,7 @@ function Header(props) {
                                 // },
                                 display: { xs: "none", md: "block" },
                                 "& .MuiTabs-indicator": {
-                                    textColor: "primary.white",
+                                    color: "primary.white",
                                     backgroundColor: "primary.green",
                                 },
                             }}
@@ -174,6 +223,7 @@ function Header(props) {
                             </Box> */}
 
                             <MaterialUISwitch onClick={colorMode.toggleMode} />
+                            {user?.uid && <Avatar alt={isUser?.name} src={isUser?.image} />}
                             <IconButton
                                 color="inherit"
                                 aria-label="open drawer"

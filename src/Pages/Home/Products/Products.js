@@ -3,6 +3,7 @@ import React from "react";
 import Product from "./Product";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { ProductData } from "./ProductData";
+import SectionTitle from "../../../Components/SectionTitle";
 
 const Products = () => {
     const [value, setValue] = React.useState(0);
@@ -22,8 +23,15 @@ const Products = () => {
                         justifyContent: "space-between",
                         alignItems: "center",
                         mb: 5,
+                    }} 
+                >*/}
+                <SectionTitle
+                    colored="Browse car by body type"
+                    // colored="our works"
+                    sx={{
+                        textAlign: "left",
                     }}
-                > */}
+                />
                 <Box
                     sx={{
                         display: "flex",
@@ -51,17 +59,22 @@ const Products = () => {
                             },
                         }}
                     >
-                        <Tab label="All" />
                         <Tab label="Sedan" />
                         <Tab label="SUV" />
                         <Tab label="Crossover" />
-                        <Tab label="Mobile App" />
+                        <Tab label="Coupe" />
+                        <Tab label="Wagon" />
+                        <Tab label="Hatchback" />
+                        <Tab label="Jeep" />
                         <Tab label="Sports Car" />
                     </Tabs>
                     <Box sx={{}}>
                         <IconButton
                             sx={{
-                                border: (theme) => `1px solid ${value === 0 ? "#959EAD" : theme.palette.primary.main}`,
+                                border: (theme) =>
+                                    `1px solid ${
+                                        value === 0 ? theme.palette.secondary.fade : theme.palette.primary.main
+                                    }`,
                                 mr: 2,
                                 color: "primary.main",
                             }}
@@ -74,12 +87,12 @@ const Products = () => {
                             sx={{
                                 border: (theme) =>
                                     `1px solid ${
-                                        value === 2 ? theme.palette.secondary.main : theme.palette.primary.main
+                                        value === 7 ? theme.palette.secondary.fade : theme.palette.primary.main
                                     }`,
                                 color: "primary.main",
                             }}
                             onClick={() => setValue(value + 1)}
-                            disabled={value === 2}
+                            disabled={value === 7}
                         >
                             <ArrowBackIcon
                                 sx={{
@@ -90,7 +103,6 @@ const Products = () => {
                     </Box>
                 </Box>
                 {/* </Box> */}
-
                 <Grid container spacing={3} justifyContent="center" sx={{ my: 1 }}>
                     {ProductData[value].map((image) => (
                         <Grid item>

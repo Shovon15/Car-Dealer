@@ -2,7 +2,7 @@ import { Container, IconButton, Tab, Tabs, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import React from "react";
-import logo from "../../../assets/logo/car-dealer-logo.png";
+// import logo from "../../../assets/logo/car-dealer-logo.png";
 import { Link } from "react-router-dom";
 
 const BrowseCarType = () => {
@@ -87,22 +87,24 @@ const BrowseCarType = () => {
                         },
                     }}
                 >
-                    <Link to="/suv" sx={{ textDecoration: "none" }}>
-                        <Tab label="SUV"></Tab>
+                    <Link to="/suv" style={{ textDecoration: "none" }}>
+                        <Tab label="SUV">
+                            <ArrowBackIcon />
+                        </Tab>
                     </Link>
-                    <Link to="/sedan" sx={{ textDecoration: "none" }}>
+                    <Link to="/sedan" style={{ textDecoration: "none" }}>
                         <Tab label="Sedan" />
                     </Link>
-                    <Link to="/hybrid" sx={{ textDecoration: "none" }}>
+                    <Link to="/hybrid" style={{ textDecoration: "none" }}>
                         <Tab label="Hybrid" />
                     </Link>
-                    <Link to="/crossover" sx={{ textDecoration: "none" }}>
+                    <Link to="/crossover" style={{ textDecoration: "none" }}>
                         <Tab label="Crossover" />
                     </Link>
-                    <Link to="/suv" sx={{ textDecoration: "none" }}>
+                    <Link to="/suv" style={{ textDecoration: "none" }}>
                         <Tab label="Coupe" />
                     </Link>
-                    <Link to="/suv" sx={{ textDecoration: "none" }}>
+                    <Link to="/suv" style={{ textDecoration: "none" }}>
                         <Tab label="Wagon" />
                     </Link>
                 </Tabs>

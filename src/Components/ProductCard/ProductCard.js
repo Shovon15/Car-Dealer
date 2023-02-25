@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
                 },
             }}
         >
-            <CardMedia sx={{ height: 200 }} image={product.image} title="green iguana" />
+            <CardMedia sx={{ height: 200 }} image={product.image} title="Car" />
             <CardContent sx={{ pb: 0 }}>
                 <Typography variant="h6">{car_brand}</Typography>
                 <Typography gutterBottom variant="h5" component="div">

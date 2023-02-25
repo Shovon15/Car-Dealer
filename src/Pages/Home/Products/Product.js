@@ -25,7 +25,7 @@ const Product = ({ image }) => {
                 },
             }}
         >
-            <CardMedia sx={{ height: 200 }} image={image} title="green iguana" />
+            <CardMedia sx={{ height: 200 }} image={image} title="Car" />
             <CardContent sx={{ pb: 0 }}>
                 <Typography gutterBottom variant="h5" component="div">
                     Mercedes Benz Car

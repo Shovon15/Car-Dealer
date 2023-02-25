@@ -27,15 +27,18 @@ export const ColorContextProvider = ({ children }) => {
             primary: {
                 light: "#706fd3",
                 main: "#40407a",
-                dark: "#2c2c54",
+                // dark: "#2c2c54",
+                dark: "#003892",
                 green: "#00FF00",
                 white: "#FFFFFF",
                 contrastText: "#fff",
+                red: "#FF0000",
             },
             secondary: {
                 light: "#6fbf73",
                 main: "#4caf50",
                 dark: "#357a38",
+                fade: "#959EAD",
                 contrastText: "#000",
             },
             info: {
@@ -44,10 +47,11 @@ export const ColorContextProvider = ({ children }) => {
                 dark: "#357a38",
                 contrastText: "#000",
             },
+
             components: {
                 MuiContainer: {
                     defaultProps: {
-                        maxWidth: "lg", // 1200
+                        // maxWidth: "1400px", // 1200
                     },
                 },
                 MuiButton: {

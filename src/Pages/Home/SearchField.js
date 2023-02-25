@@ -1,10 +1,12 @@
 import { Box, Button, Container, Grid, Paper, Stack, styled, TextField, Typography } from "@mui/material";
-import React from "react";
+import React, { useRef } from "react";
 import SearchBrand from "../../Components/SearchField/SearchBrand";
 import SearchModel from "../../Components/SearchField/SearchModel";
 import SearchIcon from "@mui/icons-material/Search";
 import SearchBody from "../../Components/SearchField/SearchBody";
 import SearchYear from "../../Components/SearchField/SearchYear";
+import { Link } from "react-router-dom";
+import SearchCondition from "../../Components/SearchField/SearchCondition";
 
 const Item = styled(Paper)(({ theme }) => ({
     bgcolor: (theme) => (theme.palette.mode === "dark" ? "#101010" : "#fff"),
@@ -17,14 +19,19 @@ const Item = styled(Paper)(({ theme }) => ({
     fontWeight: "700",
 }));
 const SearchField = () => {
+    const searchRef = useRef();
+    const handleSearch = () => {
+        console.log(searchRef.current.value);
+    };
     return (
         <Container>
-            {/* <Typography variant="h4" sx={{ m: 5 }}>
-                Search
-            </Typography> */}
-
             <Grid container spacing={2} justifyContent="center" sx={{ boxShadow: "none", mt: "2rem" }}>
-                <Grid sx={{ boxShadow: "none" }}>
+                <Grid>
+                    <Item>
+                        <SearchCondition />
+                    </Item>
+                </Grid>
+                <Grid>
                     <Item>
                         <SearchBrand />
                     </Item>
@@ -46,21 +53,18 @@ const SearchField = () => {
                 </Grid>
                 <Grid>
                     <Item>
-                        <SearchBrand />
-                    </Item>
-                </Grid>
-
-                <Grid>
-                    <Item>
-                        <Button
-                            variant="contained"
-                            color="secondary"
-                            fullWidth
-                            sx={{ width: "350px", mx: 1, my: 2, py: 1 }}
-                            startIcon={<SearchIcon />}
-                        >
-                            Find Your Car
-                        </Button>
+                        <Link to="/search" style={{ textDecoration: "none" }}>
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                fullWidth
+                                sx={{ width: "360px", mx: 1, my: 2, py: 1 }}
+                                startIcon={<SearchIcon />}
+                                // onClick={handleSearch}
+                            >
+                                Find Your Car
+                            </Button>
+                        </Link>
                     </Item>
                 </Grid>
             </Grid>

@@ -28,7 +28,7 @@ const SearchModel = () => {
         <Box
             component="form"
             sx={{
-                "& .MuiTextField-root": { m: 1, width: "35ch" },
+                "& .MuiTextField-root": { m: 1, width: "360px" },
             }}
             noValidate
             autoComplete="off"

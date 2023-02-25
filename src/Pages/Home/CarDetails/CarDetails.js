@@ -50,7 +50,7 @@ const CarDetails = () => {
             >
                 <Item sx={{ textAlign: "center" }}>
                     <Box>
-                        <img style={{ width: "10%" }} src={image} alt="ima-ges" />
+                        <img style={{ width: "100%" }} src={image} alt="ima-ges" />
                     </Box>
                     <Box sx={{ display: "flex", flexDirection: "column", mx: "3rem", gap: 1, my: 5 }}>
                         <Button variant="contained">button</Button>

@@ -1,4 +1,4 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { useContext } from "react";
 import { RouterProvider } from "react-router-dom";
 import { ColorModeContext } from "./Context/ColorModeContext";
@@ -8,12 +8,12 @@ function App() {
     const { theme } = useContext(ColorModeContext);
 
     return (
-        <div>
+        <Box>
             <ThemeProvider theme={theme}>
                 <RouterProvider router={router}></RouterProvider>
                 <CssBaseline />
             </ThemeProvider>
-        </div>
+        </Box>
     );
 }
 

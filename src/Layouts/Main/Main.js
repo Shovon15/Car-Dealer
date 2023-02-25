@@ -9,10 +9,10 @@ const Main = () => {
     return (
         <Box>
             {/* <Typography variant="h3">From main</Typography> */}
-            <Container>
-                <Header />
-                <Outlet />
-            </Container>
+            {/* <Container> */}
+            <Header />
+            <Outlet />
+            {/* </Container> */}
             <Footer />
         </Box>
     );

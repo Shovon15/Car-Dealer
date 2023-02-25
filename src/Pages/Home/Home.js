@@ -11,7 +11,7 @@ const Home = () => {
         <Box>
             <Banner />
             <SearchField />
-            <BrowseCarType />
+            {/* <BrowseCarType /> */}
             <Products />
         </Box>
     );

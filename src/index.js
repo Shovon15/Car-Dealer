@@ -1,14 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import AuthProvider from "./Context/AuthProvider";
 import { ColorContextProvider } from "./Context/ColorModeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <ColorContextProvider>
-            <App />
-        </ColorContextProvider>
+        <AuthProvider>
+            <ColorContextProvider>
+                <App />
+            </ColorContextProvider>
+        </AuthProvider>
     </React.StrictMode>
 );
 
